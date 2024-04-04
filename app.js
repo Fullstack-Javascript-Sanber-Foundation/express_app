@@ -23,11 +23,11 @@ app.listen(PORT, ()=> {
     console.log(`Server running on port http://localhost:${PORT}`)
 })
 
-// connection.getConnection((err) => {
-//     if(err){
-//         console.log('Error connecting to mysql :', err)
-//         server.close()
-//     } else {
-//         console.log('Connected to mysql successfully')
-//     }
-// })
+connection.getConnection((err) => {
+    if(err){
+        console.log('Error connecting to mysql :', err)
+        server.close()
+    } else {
+        console.log('Connected to mysql successfully')
+    }
+})

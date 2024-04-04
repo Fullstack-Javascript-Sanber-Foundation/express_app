@@ -2,7 +2,7 @@ import User from "../models/User.js"
 import brcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
-export const login = (req, res) => {
+export const login = (req, res, next) => {
     const { username, password } = req.body
 
     // check if user is registered
@@ -13,9 +13,11 @@ export const login = (req, res) => {
         if(err) {
             if(err.type === 'not_found'){
                 // user not found (belum terdaftar)
-                throw new Error('User_not_registered')
+                // throw new Error('User_not_registered')
+                return next(new Error('User_not_registered'));
             } else {
-                res.status(500).send({msg: "Exist some error"})
+                // res.status(500).send({msg: "Exist some error"})
+                return next(err)
             }
         } 
 
