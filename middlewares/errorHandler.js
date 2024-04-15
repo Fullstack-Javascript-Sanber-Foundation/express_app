@@ -13,7 +13,7 @@ const errorHandler = (err, req, res, next) => {
             message = "User not registered";
             break;
         default: 
-            code = 500
+            statusCode = 500
             message = "Internal server error"
             break
     }
